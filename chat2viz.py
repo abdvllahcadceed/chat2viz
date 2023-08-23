@@ -12,7 +12,7 @@ st.markdown("<h1 style='text-align: center; font-weight:bold; font-family:comic 
 st.markdown("<h2 style='text-align: center;padding-top: 0rem;'>Creating Visualisations using Natural Language \
             with ChatGPT</h2>", unsafe_allow_html=True)
   
-st.sidebar.markdown('''Application built by [Abdullahi M. Cadceed](https://twitter.com/@abdullahcadceed)''')
+st.markdown('''Application built by [Abdullahi M. Cadceed](https://twitter.com/@abdullahcadceed)''')
 
 
 available_models = {"ChatGPT-4": "gpt-4", "ChatGPT-3.5": "gpt-3.5-turbo","GPT-3": "text-davinci-003",}
