@@ -1,7 +1,7 @@
 import pandas as pd
 import openai
 import streamlit as st
-#import streamlit_nested_layout
+# import streamlit_nested_layout
 from classes import get_primer,format_question,run_request
 import warnings
 warnings.filterwarnings("ignore")
@@ -18,24 +18,24 @@ st.sidebar.markdown('''Application built by [Abdullahi M. Cadceed](https://twitt
 available_models = {"ChatGPT-3.5": "gpt-3.5-turbo","GPT-3": "text-davinci-003",}
 
 # List to hold datasets
-#if "datasets" not in st.session_state:
-   # datasets = {}
-    # Preload datasets
-    #datasets["Movies"] = pd.read_csv("movies.csv")
-   # datasets["Housing"] =pd.read_csv("housing.csv")
-   # datasets["Cars"] =pd.read_csv("cars.csv")
-   # datasets["Colleges"] =pd.read_csv("colleges.csv")
-   # datasets["Customers & Products"] =pd.read_csv("customers_and_products_contacts.csv")
-   # datasets["Department Store"] =pd.read_csv("department_store.csv")
-  #  datasets["Energy Production"] =pd.read_csv("energy_production.csv")
-  #  st.session_state["datasets"] = datasets
-#else:
+if "datasets" not in st.session_state:
+    datasets = {}
+    Preload datasets
+    datasets["Movies"] = pd.read_csv("movies.csv")
+    datasets["Housing"] =pd.read_csv("housing.csv")
+    datasets["Cars"] =pd.read_csv("cars.csv")
+    datasets["Colleges"] =pd.read_csv("colleges.csv")
+    datasets["Customers & Products"] =pd.read_csv("customers_and_products_contacts.csv")
+    datasets["Department Store"] =pd.read_csv("department_store.csv")
+    datasets["Energy Production"] =pd.read_csv("energy_production.csv")
+    st.session_state["datasets"] = datasets
+else:
     # use the list already loaded
-   # datasets = st.session_state["datasets"]
+   datasets = st.session_state["datasets"]
 
 my_key = st.text_input(label = ":key: OpenAI Key:", help="Please ensure you have an OpenAI API account with credit. ChatGPT Plus subscription does not include API access.",type="password")
 
-#with st.sidebar:
+with st.sidebar:
     # First we want to choose the dataset, but we will fill it with choices once we've loaded one
     dataset_container = st.empty()
 
@@ -66,8 +66,8 @@ question = st.text_area(":eyes: What would you like to visualise?",height=10)
 go_btn = st.button("Visualize!")
 
 # Make a list of the models which have been selected
-#model_dict = {model_name: use_model for model_name, use_model in use_model.items() if use_model}
-#model_count = len(model_dict)
+model_dict = {model_name: use_model for model_name, use_model in use_model.items() if use_model}
+model_count = len(model_dict)
 model_list = [model_name for model_name, choose_model in use_model.items() if choose_model]
 model_count = len(model_list)
 
@@ -122,9 +122,9 @@ for dataset_num, tab in enumerate(tab_list):
         st.dataframe(datasets[dataset_name],hide_index=True)
         
 # Insert footer to reference dataset origin  
-#footer="""<style>.footer {position: fixed;left: 0;bottom: 0;width: 100%;text-align: center;}</style><div class="footer">
-#<p> <a style='display: block; text-align: center;'> Datasets courtesy of NL4DV, nvBench and ADVISor </a></p></div>"""
-#st.caption("Datasets courtesy of NL4DV, nvBench and ADVISor")
+footer="""<style>.footer {position: fixed;left: 0;bottom: 0;width: 100%;text-align: center;}</style><div class="footer">
+<p> <a style='display: block; text-align: center;'> Datasets courtesy of NL4DV, nvBench and ADVISor </a></p></div>"""
+st.caption("Datasets courtesy of NL4DV, nvBench and ADVISor")
 
 # Hide menu and footer
 #hide_streamlit_style = """
